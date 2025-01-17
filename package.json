@@ -15,6 +15,7 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/tsconfig": "^0.7.0",
     "autoprefixer": "^10.4.20",
+    "bmi-calc": "^2.0.0",
     "postcss": "^8.5.1",
     "sass-embedded": "^1.83.4",
     "tailwindcss": "^3.4.17",
