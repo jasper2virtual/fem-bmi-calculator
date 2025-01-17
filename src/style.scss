@@ -1,3 +1,72 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+    font-family: 'Inter';
+    src: url('/src/assets/fonts/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
+}
+
+@function px2rem($px) {
+    @return #{$px / 16}rem;
+}
+
+:root {
+    --font-size-base: 16px;
+
+    --mobile-header-height: 90px;
+    --tablet-header-height: 90px;
+    --desktop-header-height: 120px;
+
+}
+
+html {
+    font-family: 'Inter';
+    font-size: var(--font-size-base);
+}
+
+.app-text-heading-default{
+    font-family: 'Inter';
+    @apply font-semibold;
+    line-height: 110%;
+}
+
+.app-text-heading-xl {
+    @extend .app-text-heading-default;
+    font-size: px2rem(64);
+}
+
+.app-text-heading-l {
+    @extend .app-text-heading-default;
+    font-size: px2rem(48);
+}
+
+.app-text-heading-m {
+    @extend .app-text-heading-default;
+    font-size: px2rem(24);
+}
+
+.app-text-heading-s {
+    @extend .app-text-heading-default;
+    font-size: px2rem(20);
+}
+
+.app-text-body-default{
+    font-family: 'Inter';
+    font-size: px2rem(16);
+    @apply font-normal;
+    line-height: 150%;
+}
+
+.app-text-body-m{
+    @extend .app-text-body-default;
+}
+
+.app-text-body-m-bold{
+    @extend .app-text-body-default;
+    @apply font-semibold;
+}
+
+.app-text-body-s{
+    @extend .app-text-body-default;
+    font-size: px2rem(14);
+}   
