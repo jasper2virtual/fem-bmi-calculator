@@ -18,5 +18,5 @@ declare module 'bmi-calc' {
      * - `value`: The calculated BMI value.
      * - `name`: The BMI category name.
     */
-    export default function calcBMI(weight: number, height: number, isImperial: boolean): { value: number, name: string };
+    export default function calcBMI(weight: number, height: number, isImperial?: boolean): { value: number, name: string };
 }
