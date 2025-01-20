@@ -6,46 +6,24 @@ import { length, mass } from 'units-converter'
 
 export function useBMI() {
 
-
-    const weightInKg = computed({
-        get: () => _weightInKg.value,
-        set: (value) => {
-            _weightInKg.value = value
-        }
-    })
-    const heightInCm = computed({
-        get: () => _heightInCm.value,
-        set: (value) => {
-            _heightInCm.value = value
-        }
-    })
-   
-    const weightInLb = computed({
-        get: () => mass(_weightInKg.value).from('kg').to('lb').value,
-        set: (value) => {
-            _weightInKg.value = mass(value).from('lb').to('kg').value
-        }
-    })
-    const heightInIn = computed({
-        get: () => length(_heightInCm.value).from('cm').to('in').value,
-        set: (value) => {
-            _heightInCm.value = length(value).from('in').to('cm').value
-        }
-    })
-
-    const _weightInKg=ref<number>(0)
-    const _heightInCm = ref<number>(0)
+    const system = ref<'metric' | 'imperial'>('metric')
+    const weightInKg = ref<number>(0)
+    const heightInCm = ref<number>(0)
+    const weightInLb = ref<number>(0)
+    const heightInIn = ref<number>(0)
 
     const bmi = computed(() => {
-        const { value: bmiValue, name: bmiCategory } = calcBMI(_weightInKg.value, length(_heightInCm.value).from('cm').to('m').value)
+        const { value: bmiValue, name: bmiCategory } = system.value == 'metric' ?
+            calcBMI(weightInKg.value, length(heightInCm.value).from('cm').to('m').value) :
+            calcBMI(weightInLb.value, length(heightInIn.value), true)
         return { bmiValue, bmiCategory }
     })
 
-    const idealWeightInKg = computed(() => 20 * _heightInCm.value * _heightInCm.value)
-    const idealWeightInLb = computed(() => mass(idealWeightInKg.value).from('kg').to('lb').value)
-
+    const idealWeightInKg = computed(() => 20 * Math.pow(length(heightInCm.value).from('cm').to('m').value, 2))
+    const idealWeightInLb = computed(() => mass(20 * Math.pow(length(heightInIn.value).from('in').to('m').value, 2)).from('kg').to('lb').value)
 
     return {
+        system,
         weightInKg,
         heightInCm,
         weightInLb,
