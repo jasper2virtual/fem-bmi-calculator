@@ -9,16 +9,23 @@
             <label class="flex flex-col">
                 <span>Height:</span>
                 <div v-if="system === 'metric'">
-                    <input type="number" v-model="heightInCm" />
+                    <inputNumber v-model="heightInCm" unit="cm" />
                 </div>
-                <div v-else class="flex">
-                    <input type="number" v-model="heightInFtPart" class="flex-1" />
-                    <input type="number" v-model="heightInInPart" min="0" max="11" class=" flex-1" />
+                <div v-else class="grid grid-cols-2 gap-4">
+                    <div>
+                        <inputNumber v-model="heightIn_FtPart" unit="ft" />
+                    </div>
+                    <div>
+                        <inputNumber v-model="heightIn_InPart" :min="0" :max="11" unit="in" />
+                    </div>
                 </div>
             </label>
-            <label class="flex flex-col"><span>Weight:</span>
-                <div><input type="number" v-model="weightInKg" />
-                    <div></div>
+            <label class="flex flex-col">
+                <span>Weight:</span>
+                <div v-if="system === 'metric'"><input type="number" v-model="weightInKg" /> </div>
+                <div v-else>
+                    <input type="number" v-model="weightIn_StPart" class="flex-1" />
+                    <input type="number" v-model="weightIn_LbPart" min="0" max="13" class="flex-1" />
                 </div>
             </label>
         </div>
@@ -28,6 +35,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { useBMI } from '/src/libs/bmi'
+import inputNumber from './input-number.vue'
 const {
     system,
     weightInKg,
@@ -39,16 +47,29 @@ const {
     idealWeightInLb
 } = useBMI()
 
-const heightInFtPart = computed({
+const heightIn_FtPart = computed({
     get: () => Math.floor(heightInIn.value / 12),
     set: (val: number) => {
-        heightInIn.value = val * 12 + heightInInPart.value
+        heightInIn.value = val * 12 + heightIn_InPart.value
     }
 })
-const heightInInPart = computed({
+const heightIn_InPart = computed({
     get: () => heightInIn.value % 12,
     set: (val: number) => {
-        heightInIn.value = val + heightInFtPart.value * 12
+        heightInIn.value = val + heightIn_FtPart.value * 12
     }
 })
+const weightIn_StPart = computed({
+    get: () => Math.floor(weightInLb.value / 14),
+    set: (val: number) => {
+        weightInLb.value = val * 14 + weightIn_LbPart.value
+    }
+})
+const weightIn_LbPart = computed({
+    get: () => weightInLb.value % 14,
+    set: (val: number) => {
+        weightInLb.value = val + weightIn_StPart.value * 14
+    }
+})
+
 </script>
