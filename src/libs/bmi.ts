@@ -1,7 +1,6 @@
 import { computed, ref } from 'vue'
 import calcBMI from 'bmi-calc'
-import { length, mass } from 'units-converter'
-
+import convert from 'convert'
 
 
 export function useBMI() {
@@ -14,18 +13,18 @@ export function useBMI() {
 
     const bmi = computed(() => {
         const { value: bmiValue, name: bmiCategory } = system.value == 'metric' ?
-            calcBMI(weightInKg.value, length(heightInCm.value).from('cm').to('m').value) :
+            calcBMI(weightInKg.value, convert(heightInCm.value,'cm').to('m')) :
             calcBMI(weightInLb.value, heightInIn.value, true)
         return { bmiValue, bmiCategory }
     })
 
     const idealWeightInKg = computed(() => ({
-        min: getWeight(18.5, length(heightInCm.value).from('cm').to('m').value),
-        max: getWeight(24.9, length(heightInCm.value).from('cm').to('m').value)
+        min: getWeight(18.5, convert(heightInCm.value,'cm').to('m')),
+        max: getWeight(24.9, convert(heightInCm.value,'cm').to('m'))
     }))
     const idealWeightInLb = computed(() => ({
-        min: mass(getWeight(18.5, length(heightInIn.value).from('in').to('m').value)).from('kg').to('lb').value,
-        max: mass(getWeight(24.9, length(heightInIn.value).from('in').to('m').value)).from('kg').to('lb').value
+        min: convert(getWeight(18.5, convert(heightInIn.value,'in').to('m')),'kg').to('lb'),
+        max: convert(getWeight(24.9, convert(heightInIn.value,'in').to('m')),'kg').to('lb')
     }))
 
     const getWeight = (bmi: number, height_m: number) => bmi * Math.pow(height_m, 2)

@@ -1,5 +1,4 @@
 <template>
-    <div>        
         <div class="mt-[--mobile-header-height] app-tablet:mt-[--tablet-header-height] app-desktop:mt-[--desktop-header-height]
         h-1/2 px-6
         relative
@@ -19,11 +18,8 @@
             </div>
             <bmi-calculator />
         </div>
-        <app-header></app-header>
-    </div>
 </template>
 <script lang="ts" setup>
-import appHeader from '/src/components/header.vue'
 import bmiCalculator from '/src/components/bmi-calculator.vue';
 </script>
 

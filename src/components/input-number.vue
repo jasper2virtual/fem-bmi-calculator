@@ -1,5 +1,5 @@
 <template>
-    <div class="input-number">
+    <div class="input-number app-text-heading-m">
         <input type="number" v-model="model" :min="props.min" :max="props.max" />
         <span>{{props.unit}}</span>
     </div>
@@ -36,10 +36,13 @@ const props = defineProps({
 
     &>input {
         -moz-appearance: textfield;
-        @apply grow;
+        @apply grow text-app-gunmetal;
     }
     &>input:focus {
         @apply outline-none;
+    }
+    &>span {
+        @apply text-app-blue;
     }
 
 }

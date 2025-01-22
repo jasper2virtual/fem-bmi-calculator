@@ -16,11 +16,11 @@
     "@vue/tsconfig": "^0.7.0",
     "autoprefixer": "^10.4.20",
     "bmi-calc": "^2.0.0",
+    "convert": "^5.7.0",
     "postcss": "^8.5.1",
     "sass-embedded": "^1.83.4",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.6.2",
-    "units-converter": "^1.0.3",
     "vite": "^6.0.5",
     "vue-tsc": "^2.2.0"
   }

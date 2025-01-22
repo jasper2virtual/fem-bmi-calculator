@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed inset-0 
+    <div class="fixed inset-0 z-10
     h-[--mobile-header-height] app-tablet:h-[--tablet-header-height] app-desktop:h-[--desktop-header-height]
     "
     :class="{'header-bg-color-scroll-y':scrollY>5}"

@@ -1,12 +1,14 @@
 <template>
-    <div class="bg-white rounded-3xl flex flex-col gap-4">
-        <div>Enter your details below</div>
-        <div class="flex">
+    <div class="bg-white rounded-3xl flex flex-col gap-4 p-4">
+        <div class="app-text-heading-m" >Enter your details below</div>
+        <div class="flex app-text-body-m">
             <label class=" flex-1 flex gap-2"><input type="radio" value="metric" v-model="system" />Metric</label>
             <label class="flex-1 flex gap-2"><input type="radio" value="imperial" v-model="system" />Imperial</label>
         </div>
-        <div class="flex flex-col gap-4">
-            <label class="flex flex-col gap-2">
+        <div class="flex flex-col gap-4" :class="{
+             'app-tablet:flex-row': system === 'metric',
+        }">
+            <label class="flex flex-col gap-2 app-tablet:flex-1">
                 <span>Height:</span>
                 <div v-if="system === 'metric'">
                     <input-number v-model="heightInCm" :max="300" unit="cm" />
@@ -20,7 +22,7 @@
                     </div>
                 </div>
             </label>
-            <label class="flex flex-col gap-2">
+            <label class="flex flex-col gap-2 app-tablet:flex-1">
                 <span>Weight:</span>
                 <div v-if="system === 'metric'">
                     <inputNumber v-model="weightInKg" unit="kg" :max="640" />
@@ -35,21 +37,25 @@
                 </div>
             </label>
         </div>
-        <div class=" bg-blue-400 text-white rounded-lg p-4" v-if="bmi.bmiValue">
-            <div>Your BMI is...</div>
-            <div>{{ bmi.bmiValue.toFixed(1) }}</div>
-            Your BMI suggests you’re a {{ bmi.bmiCategory }}. Your ideal weight is between
-            <span class="font-bold">
-                <template v-if="system === 'metric'">
-                    {{ idealWeightInKg.min.toFixed(1) }}kgs - {{ idealWeightInKg.max.toFixed(1) }}kgs
-                </template>
-                <template v-else>
-                    {{ minIdealWeightIn_StPart.toFixed(0) }}st {{ minIdealWeightIn_LbPart.toFixed(0) }}lbs - {{
-                        maxIdealWeightIn_StPart.toFixed(0) }}st {{
-                        maxIdealWeightIn_LbPart.toFixed(0) }}lbs
-                </template>
-            </span>
-            .
+        <div class=" bg-app-blue text-white rounded-lg p-4 app-text-body-m flex flex-col gap-4 app-tablet:rounded-r-full app-tablet:flex-row app-tablet:justify-between app-tablet:items-center " v-if="bmi.bmiValue">
+            <div class="flex flex-col gap-2">
+                <div>Your BMI is...</div>
+                <div class="app-text-heading-l">{{ bmi.bmiValue.toFixed(1) }}</div>
+            </div>
+            <div>
+                Your BMI suggests you’re a {{ bmi.bmiCategory }}. Your ideal weight is between
+                <span class="font-bold">
+                    <template v-if="system === 'metric'">
+                        {{ idealWeightInKg.min.toFixed(1) }}kgs - {{ idealWeightInKg.max.toFixed(1) }}kgs
+                    </template>
+                    <template v-else>
+                        {{ minIdealWeightIn_StPart.toFixed(0) }}st {{ minIdealWeightIn_LbPart.toFixed(0) }}lbs - {{
+                            maxIdealWeightIn_StPart.toFixed(0) }}st {{
+                            maxIdealWeightIn_LbPart.toFixed(0) }}lbs
+                    </template>
+                </span>
+                .
+            </div>
         </div>
     </div>
 

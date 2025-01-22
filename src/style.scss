@@ -39,6 +39,10 @@ html {
     @extend .app-text-heading-default;
     font-size: px2rem(48);
 }
+.app-text-heading-32 {
+    @extend .app-text-heading-default;
+    font-size: px2rem(32);
+}
 
 .app-text-heading-m {
     @extend .app-text-heading-default;

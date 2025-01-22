@@ -1,10 +1,12 @@
 <template>
 
 <div class="flex flex-col gap-6 p-6">
-    <div v-for="(item,index) in suggestions" :key="index" class="flex flex-col gap-4 items-start">
+    <div v-for="(item,index) in suggestions" :key="index" class="flex flex-col gap-4 items-start app-tablet:flex-row app-tablet:items-center">
         <img :src="item.icon" class="h-[64px]" />
-        <div>{{item.title}}</div>
-        <div>{{item.desc}}</div>
+        <div class="flex flex-col gap-4">
+            <div class="app-text-heading-m text-app-gunmetal">{{item.title}}</div>
+            <div class="app-text-body-m text-app-darkElectricBlue">{{item.desc}}</div>
+        </div>
     </div>
 </div>
 
