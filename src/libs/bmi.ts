@@ -15,7 +15,7 @@ export function useBMI() {
     const bmi = computed(() => {
         const { value: bmiValue, name: bmiCategory } = system.value == 'metric' ?
             calcBMI(weightInKg.value, length(heightInCm.value).from('cm').to('m').value) :
-            calcBMI(weightInLb.value, length(heightInIn.value), true)
+            calcBMI(weightInLb.value, heightInIn.value, true)
         return { bmiValue, bmiCategory }
     })
 

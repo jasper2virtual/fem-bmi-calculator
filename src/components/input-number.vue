@@ -27,7 +27,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .input-number {
-    @apply flex rounded outline outline-1 outline-gray-400 gap-4 p-4 has-[:focus]:outline-black;
+    @apply flex rounded-lg outline outline-1 outline-gray-400 gap-4 p-4 has-[:focus]:outline-black;
 
     &>input::-webkit-inner-spin-button,
     &>input::-webkit-outer-spin-button {
