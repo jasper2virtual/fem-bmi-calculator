@@ -4,7 +4,7 @@
     "
     :class="{'header-bg-color-scroll-y':scrollY>5}"
     >
-        <header class="h-full flex flex-col justify-center">
+        <header class="h-full flex justify-center items-center app-desktop:justify-start app-desktop:app-grid-container">
             <div v-html="logoSvg" class="logo-svg"></div>
         </header>
     </div>
@@ -28,7 +28,6 @@ onUnmounted(()=>{
 
 <style lang="scss" scoped>
 .logo-svg {
-    @apply mx-auto;
     @apply *:h-[40px] *:app-desktop:h-[60px]
     
 }
