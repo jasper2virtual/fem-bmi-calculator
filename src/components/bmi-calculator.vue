@@ -9,25 +9,36 @@
             <label class="flex flex-col">
                 <span>Height:</span>
                 <div v-if="system === 'metric'">
-                    <inputNumber v-model="heightInCm" unit="cm" />
+                    <input-number v-model="heightInCm" :max="300" unit="cm" />
                 </div>
                 <div v-else class="grid grid-cols-2 gap-4">
                     <div>
-                        <inputNumber v-model="heightIn_FtPart" unit="ft" />
+                        <input-number v-model="heightIn_FtPart" :max="10" unit="ft" />
                     </div>
                     <div>
-                        <inputNumber v-model="heightIn_InPart" :min="0" :max="11" unit="in" />
+                        <input-number v-model="heightIn_InPart" :max="11" unit="in" />
                     </div>
                 </div>
             </label>
             <label class="flex flex-col">
                 <span>Weight:</span>
-                <div v-if="system === 'metric'"><input type="number" v-model="weightInKg" /> </div>
-                <div v-else>
-                    <input type="number" v-model="weightIn_StPart" class="flex-1" />
-                    <input type="number" v-model="weightIn_LbPart" min="0" max="13" class="flex-1" />
+                <div v-if="system === 'metric'">
+                    <inputNumber v-model="weightInKg" unit="kg" :max="640" />
+                </div>
+                <div v-else class="grid grid-cols-2 gap-4">
+                    <div>
+                        <inputNumber v-model="weightIn_StPart" :max="100" unit="st" />
+                    </div>
+                    <div>
+                        <inputNumber v-model="weightIn_LbPart" :max="13" unit="lb" />
+                    </div>
                 </div>
             </label>
+        </div>
+        <div>
+            <div>Your BMI is...</div>
+<div>22.0</div>
+Your BMI suggests you’re a healthy weight. Your ideal weight is between 9st 6lbs - 12st 10lbs.
         </div>
     </div>
 

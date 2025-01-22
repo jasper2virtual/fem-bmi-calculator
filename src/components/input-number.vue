@@ -19,7 +19,7 @@ const props = defineProps({
     },
     max:{
         type:Number,
-        default:Infinity,
+        default:false,
         required: false,
     }
 });

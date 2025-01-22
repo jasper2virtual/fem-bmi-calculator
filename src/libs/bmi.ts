@@ -19,8 +19,16 @@ export function useBMI() {
         return { bmiValue, bmiCategory }
     })
 
-    const idealWeightInKg = computed(() => 20 * Math.pow(length(heightInCm.value).from('cm').to('m').value, 2))
-    const idealWeightInLb = computed(() => mass(20 * Math.pow(length(heightInIn.value).from('in').to('m').value, 2)).from('kg').to('lb').value)
+    const idealWeightInKg = computed(() => ({
+        min: getWeight(18.5, length(heightInCm.value).from('cm').to('m').value),
+        max: getWeight(24.9, length(heightInCm.value).from('cm').to('m').value)
+    }))
+    const idealWeightInLb = computed(() => ({
+        min: mass(getWeight(18.5, length(heightInIn.value).from('in').to('m').value)).from('kg').to('lb').value,
+        max: mass(getWeight(24.9, length(heightInIn.value).from('in').to('m').value)).from('kg').to('lb').value
+    }))
+
+    const getWeight = (bmi: number, height_m: number) => bmi * Math.pow(height_m, 2)
 
     return {
         system,
