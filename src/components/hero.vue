@@ -20,6 +20,6 @@
         </div>
 </template>
 <script lang="ts" setup>
-import bmiCalculator from '/src/components/bmi-calculator.vue';
+import bmiCalculator from './bmi-calculator.vue';
 </script>
 

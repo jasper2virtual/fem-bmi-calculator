@@ -69,7 +69,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useBMI } from '/src/libs/bmi'
+import { useBMI } from '../libs/bmi'
 import inputNumber from './input-number.vue'
 const {
     system,

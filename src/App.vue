@@ -24,11 +24,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import appHeader from '/src/components/header.vue'
-import hero from '/src/components/hero.vue'
-import yourSelf from '/src/components/your-self.vue'
-import suggestions from '/src/components/suggestions.vue'
-import bmiLimitations from '/src/components/bmi-limitations.vue'
+import appHeader from './components/header.vue'
+import hero from './components/hero.vue'
+import yourSelf from './components/your-self.vue'
+import suggestions from './components/suggestions.vue'
+import bmiLimitations from './components/bmi-limitations.vue'
 </script>
 
 <style lang="scss" scoped>
