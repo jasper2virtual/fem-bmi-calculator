@@ -1,7 +1,9 @@
 <template>
 
-<div class="flex flex-col gap-6 p-6">
-    <div v-for="(item,index) in suggestions" :key="index" class="flex flex-col gap-4 items-start app-tablet:flex-row app-tablet:items-center">
+<div class="flex flex-col gap-6 p-6 app-desktop:px-0 app-desktop:app-grid-container">
+    <div v-for="(item,index) in suggestions" :key="index" class="flex flex-col gap-4 items-start app-tablet:flex-row app-tablet:items-center
+    app-desktop:col-span-4 app-desktop:flex-col app-desktop:items-start
+    ">
         <img :src="item.icon" class="h-[64px]" />
         <div class="flex flex-col gap-4">
             <div class="app-text-heading-m text-app-gunmetal">{{item.title}}</div>

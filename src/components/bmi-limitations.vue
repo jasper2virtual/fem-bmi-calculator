@@ -1,22 +1,39 @@
 <template>
 
-    <div class="p-6 flex flex-col gap-6 app-tablet:flex-row app-tablet:flex-wrap app-tablet:content-center">
-        <div class="flex flex-col gap-8">
-            <div class="app-text-heading-32 text-app-gunmetal app-tablet:text-center">Limitations of BMI</div>
-            <div class="app-text-body-m text-app-darkElectricBlue app-tablet:text-center">Although BMI is often a
-                practical indicator of healthy weight, it is not suited for every person. Specific groups should
-                carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to
-                use.</div>
-        </div>
-        <div v-for="(limitation, index) in limitations" :key="index"
-            class="flex flex-col gap-4 items-start rounded-lg p-4 shadow-xl app-tablet:max-w-[calc(50%-0.75rem)] app-tablet:w-full app-tablet:mx-auto">
-            <div class="flex gap-4 items-center">
-                <img :src="limitation.icon" :alt="limitation.title" class="h-[32px]" />
-                <div class="app-text-heading-s text-app-gunmetal">{{ limitation.title }}</div>
+<div class="app-desktop:app-grid-container">
+    
+        <div class="p-6 flex flex-col gap-6 app-tablet:flex-row app-tablet:flex-wrap app-tablet:content-center
+        app-desktop:px-0 app-desktop:col-span-full app-desktop:justify-end
+        ">
+            <div class="flex flex-col gap-8 app-desktop:w-full app-desktop:max-w-[564px] app-desktop:mr-auto">
+                <div class="app-text-heading-32 app-desktop:app-text-heading-l text-app-gunmetal app-tablet:text-center
+                app-desktop:text-start
+                ">Limitations of BMI</div>
+                <div class="app-text-body-m text-app-darkElectricBlue app-tablet:text-center
+                app-desktop:text-start
+                ">Although BMI is often a
+                    practical indicator of healthy weight, it is not suited for every person. Specific groups should
+                    carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to
+                    use.</div>
             </div>
-            <div class="app-text-body-m text-app-darkElectricBlue">{{ limitation.desc }}</div>
+            <div v-for="(limitation, index) in limitations" :key="index"
+                class="flex flex-col gap-4 items-start rounded-lg p-4 shadow-xl 
+                app-tablet:max-w-[calc(50%-0.75rem)] app-tablet:w-full 
+                app-desktop:max-w-[365px]
+                app-tablet:mx-auto
+                app-desktop:mx-0
+                "
+              
+                >
+                <div class="flex gap-4 items-center">
+                    <img :src="limitation.icon" :alt="limitation.title" class="h-[32px]" />
+                    <div class="app-text-heading-s text-app-gunmetal">{{ limitation.title }}</div>
+                </div>
+                <div class="app-text-body-m text-app-darkElectricBlue">{{ limitation.desc }}</div>
+            </div>
+            
         </div>
-    </div>
+</div>
 </template>
 
 <script lang="ts" setup>
@@ -55,3 +72,4 @@ const limitations = [
 })
 
 </script>
+

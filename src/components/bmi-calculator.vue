@@ -37,7 +37,7 @@
                 </div>
             </label>
         </div>
-        <div class=" bg-app-blue text-white rounded-lg app-tablet:rounded-r-full p-4 app-text-body-m ">
+        <div class=" bg-app-blue text-white rounded-lg app-tablet:rounded-r-full p-8 app-text-body-m ">
             <div v-if="bmi.bmiValue"
                 class="flex flex-col gap-4  app-tablet:flex-row app-tablet:justify-between app-tablet:items-center ">
                 <div class="flex flex-col gap-2">
